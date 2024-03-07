@@ -1,8 +1,8 @@
-# Install script for directory: /home/wallat/Desktop/catkin_ws/src/omtp_course/omtp_lecture1
+# Install script for directory: /home/wallat/Desktop/Object-manipulation-and-task-planning-/workspace/src/omtp_course/omtp_lecture1
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/wallat/Desktop/catkin_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/wallat/Desktop/Object-manipulation-and-task-planning-/workspace/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,17 +38,17 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/wallat/Desktop/catkin_ws/build/omtp_course/omtp_lecture1/catkin_generated/installspace/omtp_lecture1.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/wallat/Desktop/Object-manipulation-and-task-planning-/workspace/build/omtp_course/omtp_lecture1/catkin_generated/installspace/omtp_lecture1.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/omtp_lecture1/cmake" TYPE FILE FILES
-    "/home/wallat/Desktop/catkin_ws/build/omtp_course/omtp_lecture1/catkin_generated/installspace/omtp_lecture1Config.cmake"
-    "/home/wallat/Desktop/catkin_ws/build/omtp_course/omtp_lecture1/catkin_generated/installspace/omtp_lecture1Config-version.cmake"
+    "/home/wallat/Desktop/Object-manipulation-and-task-planning-/workspace/build/omtp_course/omtp_lecture1/catkin_generated/installspace/omtp_lecture1Config.cmake"
+    "/home/wallat/Desktop/Object-manipulation-and-task-planning-/workspace/build/omtp_course/omtp_lecture1/catkin_generated/installspace/omtp_lecture1Config-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/omtp_lecture1" TYPE FILE FILES "/home/wallat/Desktop/catkin_ws/src/omtp_course/omtp_lecture1/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/omtp_lecture1" TYPE FILE FILES "/home/wallat/Desktop/Object-manipulation-and-task-planning-/workspace/src/omtp_course/omtp_lecture1/package.xml")
 endif()
 

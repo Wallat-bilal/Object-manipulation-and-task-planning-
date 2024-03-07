@@ -1,4 +1,4 @@
-prefix=/home/wallat/Desktop/catkin_ws/install
+prefix=/home/wallat/Desktop/Object-manipulation-and-task-planning-/workspace/install
 
 Name: gazebo_tests
 Description: Description of gazebo_tests

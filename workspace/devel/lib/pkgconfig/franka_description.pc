@@ -1,4 +1,4 @@
-prefix=/home/wallat/Desktop/catkin_ws/devel
+prefix=/home/wallat/Desktop/Object-manipulation-and-task-planning-/workspace/devel
 
 Name: franka_description
 Description: Description of franka_description

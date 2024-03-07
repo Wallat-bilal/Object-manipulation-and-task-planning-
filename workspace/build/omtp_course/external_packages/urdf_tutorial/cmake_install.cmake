@@ -1,8 +1,8 @@
-# Install script for directory: /home/wallat/Desktop/catkin_ws/src/omtp_course/external_packages/urdf_tutorial
+# Install script for directory: /home/wallat/Desktop/Object-manipulation-and-task-planning-/workspace/src/omtp_course/external_packages/urdf_tutorial
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/wallat/Desktop/catkin_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/wallat/Desktop/Object-manipulation-and-task-planning-/workspace/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,27 +38,27 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/wallat/Desktop/catkin_ws/build/omtp_course/external_packages/urdf_tutorial/catkin_generated/installspace/urdf_tutorial.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/wallat/Desktop/Object-manipulation-and-task-planning-/workspace/build/omtp_course/external_packages/urdf_tutorial/catkin_generated/installspace/urdf_tutorial.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/urdf_tutorial/cmake" TYPE FILE FILES
-    "/home/wallat/Desktop/catkin_ws/build/omtp_course/external_packages/urdf_tutorial/catkin_generated/installspace/urdf_tutorialConfig.cmake"
-    "/home/wallat/Desktop/catkin_ws/build/omtp_course/external_packages/urdf_tutorial/catkin_generated/installspace/urdf_tutorialConfig-version.cmake"
+    "/home/wallat/Desktop/Object-manipulation-and-task-planning-/workspace/build/omtp_course/external_packages/urdf_tutorial/catkin_generated/installspace/urdf_tutorialConfig.cmake"
+    "/home/wallat/Desktop/Object-manipulation-and-task-planning-/workspace/build/omtp_course/external_packages/urdf_tutorial/catkin_generated/installspace/urdf_tutorialConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/urdf_tutorial" TYPE FILE FILES "/home/wallat/Desktop/catkin_ws/src/omtp_course/external_packages/urdf_tutorial/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/urdf_tutorial" TYPE FILE FILES "/home/wallat/Desktop/Object-manipulation-and-task-planning-/workspace/src/omtp_course/external_packages/urdf_tutorial/package.xml")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/urdf_tutorial" TYPE DIRECTORY FILES
-    "/home/wallat/Desktop/catkin_ws/src/omtp_course/external_packages/urdf_tutorial/images"
-    "/home/wallat/Desktop/catkin_ws/src/omtp_course/external_packages/urdf_tutorial/meshes"
-    "/home/wallat/Desktop/catkin_ws/src/omtp_course/external_packages/urdf_tutorial/launch"
-    "/home/wallat/Desktop/catkin_ws/src/omtp_course/external_packages/urdf_tutorial/rviz"
-    "/home/wallat/Desktop/catkin_ws/src/omtp_course/external_packages/urdf_tutorial/urdf"
+    "/home/wallat/Desktop/Object-manipulation-and-task-planning-/workspace/src/omtp_course/external_packages/urdf_tutorial/images"
+    "/home/wallat/Desktop/Object-manipulation-and-task-planning-/workspace/src/omtp_course/external_packages/urdf_tutorial/meshes"
+    "/home/wallat/Desktop/Object-manipulation-and-task-planning-/workspace/src/omtp_course/external_packages/urdf_tutorial/launch"
+    "/home/wallat/Desktop/Object-manipulation-and-task-planning-/workspace/src/omtp_course/external_packages/urdf_tutorial/rviz"
+    "/home/wallat/Desktop/Object-manipulation-and-task-planning-/workspace/src/omtp_course/external_packages/urdf_tutorial/urdf"
     )
 endif()
 

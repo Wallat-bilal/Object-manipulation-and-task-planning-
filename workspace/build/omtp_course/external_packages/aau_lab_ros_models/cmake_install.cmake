@@ -1,8 +1,8 @@
-# Install script for directory: /home/wallat/Desktop/catkin_ws/src/omtp_course/external_packages/aau_lab_ros_models
+# Install script for directory: /home/wallat/Desktop/Object-manipulation-and-task-planning-/workspace/src/omtp_course/external_packages/aau_lab_ros_models
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/wallat/Desktop/catkin_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/wallat/Desktop/Object-manipulation-and-task-planning-/workspace/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,17 +38,17 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/wallat/Desktop/catkin_ws/build/omtp_course/external_packages/aau_lab_ros_models/catkin_generated/installspace/aau_lab_ros_models.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/wallat/Desktop/Object-manipulation-and-task-planning-/workspace/build/omtp_course/external_packages/aau_lab_ros_models/catkin_generated/installspace/aau_lab_ros_models.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/aau_lab_ros_models/cmake" TYPE FILE FILES
-    "/home/wallat/Desktop/catkin_ws/build/omtp_course/external_packages/aau_lab_ros_models/catkin_generated/installspace/aau_lab_ros_modelsConfig.cmake"
-    "/home/wallat/Desktop/catkin_ws/build/omtp_course/external_packages/aau_lab_ros_models/catkin_generated/installspace/aau_lab_ros_modelsConfig-version.cmake"
+    "/home/wallat/Desktop/Object-manipulation-and-task-planning-/workspace/build/omtp_course/external_packages/aau_lab_ros_models/catkin_generated/installspace/aau_lab_ros_modelsConfig.cmake"
+    "/home/wallat/Desktop/Object-manipulation-and-task-planning-/workspace/build/omtp_course/external_packages/aau_lab_ros_models/catkin_generated/installspace/aau_lab_ros_modelsConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/aau_lab_ros_models" TYPE FILE FILES "/home/wallat/Desktop/catkin_ws/src/omtp_course/external_packages/aau_lab_ros_models/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/aau_lab_ros_models" TYPE FILE FILES "/home/wallat/Desktop/Object-manipulation-and-task-planning-/workspace/src/omtp_course/external_packages/aau_lab_ros_models/package.xml")
 endif()
 

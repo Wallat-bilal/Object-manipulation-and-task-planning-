@@ -4,5 +4,5 @@ PROJECT_PKG_CONFIG_INCLUDE_DIRS = "".split(';') if "" != "" else []
 PROJECT_CATKIN_DEPENDS = "xacro".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "franka_description"
-PROJECT_SPACE_DIR = "/home/wallat/Desktop/catkin_ws/devel"
+PROJECT_SPACE_DIR = "/home/wallat/Desktop/Object-manipulation-and-task-planning-/workspace/devel"
 PROJECT_VERSION = "0.7.1"

@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/wallat/Desktop/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/wallat/Desktop/Object-manipulation-and-task-planning-/workspace/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/wallat/Desktop/catkin_ws/build
+CMAKE_BINARY_DIR = /home/wallat/Desktop/Object-manipulation-and-task-planning-/workspace/build
 
 # Utility rule file for tests.
 
@@ -67,6 +67,6 @@ CMakeFiles/tests.dir/clean:
 .PHONY : CMakeFiles/tests.dir/clean
 
 CMakeFiles/tests.dir/depend:
-	cd /home/wallat/Desktop/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/wallat/Desktop/catkin_ws/src /home/wallat/Desktop/catkin_ws/src /home/wallat/Desktop/catkin_ws/build /home/wallat/Desktop/catkin_ws/build /home/wallat/Desktop/catkin_ws/build/CMakeFiles/tests.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/wallat/Desktop/Object-manipulation-and-task-planning-/workspace/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/wallat/Desktop/Object-manipulation-and-task-planning-/workspace/src /home/wallat/Desktop/Object-manipulation-and-task-planning-/workspace/src /home/wallat/Desktop/Object-manipulation-and-task-planning-/workspace/build /home/wallat/Desktop/Object-manipulation-and-task-planning-/workspace/build /home/wallat/Desktop/Object-manipulation-and-task-planning-/workspace/build/CMakeFiles/tests.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/tests.dir/depend
 
