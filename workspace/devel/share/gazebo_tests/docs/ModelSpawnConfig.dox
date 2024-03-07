@@ -1,0 +1,44 @@
+\subsubsection parameters ROS parameters
+
+Reads and maintains the following parameters on the ROS server
+
+- \b "~MODELNAME_" : \b [str] model name of the box min: , default: test_model, max: 
+- \b "~MASS_" : \b [double] box mass min: 0.0, default: 1.0, max: 100.0
+- \b "~IXYZ_" : \b [double] inertia ixx, iyy, izz terms min: 0.0, default: 0.01, max: 0.1
+- \b "~SIZEX_" : \b [double] box size and collision X min: 0.0, default: 1.0, max: 10.0
+- \b "~SIZEY_" : \b [double] box size and collision Y min: 0.0, default: 1.0, max: 10.0
+- \b "~SIZEZ_" : \b [double] box size and collision Z min: 0.0, default: 1.0, max: 10.0
+- \b "~RESTITUTION_COEFFICIENT_" : \b [double] bounce restitution coefficient min: 0.0, default: 1.0, max: 1.0
+- \b "~THRESHOLD_" : \b [int] bounce threshold min: 0, default: 100000, max: 1000000000
+- \b "~MU_" : \b [double] mu, Coefficient of friction min: 0.0, default: 1.0, max: 1.0
+- \b "~MU2_" : \b [double] mu2, Second coefficient of friction min: 0.0, default: 1.0, max: 1.0
+- \b "~FDIR1X_" : \b [int] fdir1 X, direction of mu1 in the collision local reference frame min: 0, default: 0, max: 1
+- \b "~FDIR1Y_" : \b [int] fdir1 Y, direction of mu1 in the collision local reference frame min: 0, default: 0, max: 1
+- \b "~FDIR1Z_" : \b [int] fdir1 Z, direction of mu1 in the collision local reference frame min: 0, default: 0, max: 1
+- \b "~SLIP1_" : \b [double] slip1, force dependent slip direction 1 min: 0.0, default: 0.0, max: 1.0
+- \b "~SLIP2_" : \b [double] slip2, force dependent slip direction 2 min: 0.0, default: 0.0, max: 1.0
+- \b "~SOFT_CFM_" : \b [double] Soft constraint force mixing min: 0.0, default: 0.0, max: 1.0
+- \b "~SOFT_ERP_" : \b [double] Soft error reduction parameter min: 0.0, default: 0.2, max: 1.0
+- \b "~KP_" : \b [double] Dynamically stiffness-equivalent coefficient for contact joints min: 0.0, default: 1000000000000.0, max: 1000000000.0
+- \b "~KD_" : \b [double] Dynamically damping-equivalent coefficient for contact joints min: 0.0, default: 1.0, max: 100000.0
+- \b "~MINDEPTH_" : \b [double] Minimum allowable depth before contact correction impulse is applied min: 0.0, default: 0.0, max: 0.1
+- \b "~MAXVEL_" : \b [double] Maximum contact correction velocity truncation term min: 0.0, default: 0.01, max: 1.0
+- \b "~VELDECAYLINEAR_" : \b [double] Velocity decay linear term min: 0.0, default: 0.0, max: 1.0
+- \b "~VELDECAYANGULAR_" : \b [double] Velocity decay angular term min: 0.0, default: 0.0, max: 1.0
+- \b "~click_to_spawn_model" : \b [bool] Click here to spawn model min: False, default: False, max: True
+- \b "~DEGREESRAMP" : \b [double] Degrees of inclination of the ramp min: 0.0, default: 10.0, max: 180.0
+- \b "~MURAMP_" : \b [double] mu, Coefficient of friction min: 0.0, default: 1.0, max: 1.0
+- \b "~MU2RAMP_" : \b [double] mu2, Second coefficient of friction min: 0.0, default: 1.0, max: 1.0
+- \b "~FDIR1XRAMP_" : \b [int] fdir1 X, direction of mu1 in the collision local reference frame min: 0, default: 0, max: 1
+- \b "~FDIR1YRAMP_" : \b [int] fdir1 Y, direction of mu1 in the collision local reference frame min: 0, default: 0, max: 1
+- \b "~FDIR1ZRAMP_" : \b [int] fdir1 Z, direction of mu1 in the collision local reference frame min: 0, default: 0, max: 1
+- \b "~SLIP1RAMP_" : \b [double] slip1, force dependent slip direction 1 min: 0.0, default: 0.0, max: 1.0
+- \b "~SLIP2RAMP_" : \b [double] slip2, force dependent slip direction 2 min: 0.0, default: 0.0, max: 1.0
+- \b "~SOFT_CFMRAMP_" : \b [double] Soft constraint force mixing min: 0.0, default: 0.0, max: 1.0
+- \b "~SOFT_ERPRAMP_" : \b [double] Soft error reduction parameter min: 0.0, default: 0.2, max: 1.0
+- \b "~KPRAMP_" : \b [double] Dynamically stiffness-equivalent coefficient for contact joints min: 0.0, default: 1000000000000.0, max: 1000000000.0
+- \b "~KDRAMP_" : \b [double] Dynamically damping-equivalent coefficient for contact joints min: 0.0, default: 1.0, max: 100000.0
+- \b "~MINDEPTHRAMP_" : \b [double] Minimum allowable depth before contact correction impulse is applied min: 0.0, default: 0.0, max: 0.1
+- \b "~MAXVELRAMP_" : \b [double] Maximum contact correction velocity truncation term min: 0.0, default: 0.01, max: 1.0
+- \b "~click_to_spawn_ramp" : \b [bool] Click here to spawn ramp model min: False, default: False, max: True
+

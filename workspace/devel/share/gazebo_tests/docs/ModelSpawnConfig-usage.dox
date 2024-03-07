@@ -1,0 +1,45 @@
+\subsubsection usage Usage
+\verbatim
+<node name="gazebo_tests" pkg="gazebo_tests" type="gazebo_tests">
+  <param name="MODELNAME_" type="str" value="test_model" />
+  <param name="MASS_" type="double" value="1.0" />
+  <param name="IXYZ_" type="double" value="0.01" />
+  <param name="SIZEX_" type="double" value="1.0" />
+  <param name="SIZEY_" type="double" value="1.0" />
+  <param name="SIZEZ_" type="double" value="1.0" />
+  <param name="RESTITUTION_COEFFICIENT_" type="double" value="1.0" />
+  <param name="THRESHOLD_" type="int" value="100000" />
+  <param name="MU_" type="double" value="1.0" />
+  <param name="MU2_" type="double" value="1.0" />
+  <param name="FDIR1X_" type="int" value="0" />
+  <param name="FDIR1Y_" type="int" value="0" />
+  <param name="FDIR1Z_" type="int" value="0" />
+  <param name="SLIP1_" type="double" value="0.0" />
+  <param name="SLIP2_" type="double" value="0.0" />
+  <param name="SOFT_CFM_" type="double" value="0.0" />
+  <param name="SOFT_ERP_" type="double" value="0.2" />
+  <param name="KP_" type="double" value="1000000000000.0" />
+  <param name="KD_" type="double" value="1.0" />
+  <param name="MINDEPTH_" type="double" value="0.0" />
+  <param name="MAXVEL_" type="double" value="0.01" />
+  <param name="VELDECAYLINEAR_" type="double" value="0.0" />
+  <param name="VELDECAYANGULAR_" type="double" value="0.0" />
+  <param name="click_to_spawn_model" type="bool" value="False" />
+  <param name="DEGREESRAMP" type="double" value="10.0" />
+  <param name="MURAMP_" type="double" value="1.0" />
+  <param name="MU2RAMP_" type="double" value="1.0" />
+  <param name="FDIR1XRAMP_" type="int" value="0" />
+  <param name="FDIR1YRAMP_" type="int" value="0" />
+  <param name="FDIR1ZRAMP_" type="int" value="0" />
+  <param name="SLIP1RAMP_" type="double" value="0.0" />
+  <param name="SLIP2RAMP_" type="double" value="0.0" />
+  <param name="SOFT_CFMRAMP_" type="double" value="0.0" />
+  <param name="SOFT_ERPRAMP_" type="double" value="0.2" />
+  <param name="KPRAMP_" type="double" value="1000000000000.0" />
+  <param name="KDRAMP_" type="double" value="1.0" />
+  <param name="MINDEPTHRAMP_" type="double" value="0.0" />
+  <param name="MAXVELRAMP_" type="double" value="0.01" />
+  <param name="click_to_spawn_ramp" type="bool" value="False" />
+</node>
+\endverbatim
+

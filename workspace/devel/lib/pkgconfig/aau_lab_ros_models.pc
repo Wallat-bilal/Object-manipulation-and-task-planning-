@@ -1,0 +1,8 @@
+prefix=/home/wallat/Desktop/Object-manipulation-and-task-planning-/workspace/devel
+
+Name: aau_lab_ros_models
+Description: Description of aau_lab_ros_models
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
