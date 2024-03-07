@@ -1,0 +1,144 @@
+<?xml version="1.0" ?>
+<robot name="omtp_factory"
+  xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- ==================================================== -->
+  <!-- INITIAL SETUP OF WORLD LINK AND WORLD_INTERFACE LINK -->
+  <!-- ==================================================== -->
+  <!-- world -->
+  <link name="world" />
+
+  <!-- world_interface. Makes it convenient to move the whole environment according to the world origin -->
+  <link name="world_interface"/>
+
+  <!-- world<->world_interface joint -->
+  <joint name="world_interface_to_world" type="fixed">
+    <parent link="world" />
+    <child link="world_interface" />
+  </joint>
+ 
+ 
+  <!-- ==================================================== -->
+  <!-- Fib14 building -->
+  <!-- ==================================================== -->
+  <!--xacro:include filename="$(find aau_lab_ros_models)/urdf/fib14/fib14.urdf.xacro"/>
+  <xacro:fib14_urdf fib14_parent="world_interface"/-->
+
+  
+  <!-- ==================================================== -->
+  <!-- AU Smart Lab modules and Franka Panda robot arm -->
+  <!-- ==================================================== -->
+
+ <!-- right last of the festo moduel -->
+  <xacro:include filename="$(find aau_lab_ros_models)/urdf/festo_bypass_module/festo_bypass_module.urdf.xacro"/>
+  <xacro:festo_module_urdf module_prefix="festo_bypass_1" festo_module_parent="world_interface">
+    <origin xyz="0.0 3.48 0.0" rpy="0 0 0"/>
+  </xacro:festo_module_urdf>
+ 
+ 
+ <!-- right of the festo moduel -->
+  <xacro:include filename="$(find aau_lab_ros_models)/urdf/festo_robot_module/festo_robot_module.urdf.xacro"/>
+  <xacro:festo_module_urdf module_prefix="festo_robot_1" festo_module_parent="world_interface">
+    <origin xyz="0.0 2.32 0.0" rpy="0 0 0"/>
+  </xacro:festo_module_urdf>
+  
+  <!--right of midell of the festo moduel -->
+  <xacro:include filename="$(find aau_lab_ros_models)/urdf/festo_straight_module/festo_straight_module.urdf.xacro"/>
+  <xacro:festo_module_urdf module_prefix="festo_straight_1" festo_module_parent="world_interface">
+    <origin xyz="0.0 1.16 0.0" rpy="0 0 0"/>
+  </xacro:festo_module_urdf>
+
+
+  <!-- midell bottom of the festo moduel -->
+  <xacro:festo_module_urdf module_prefix="festo_straight_4" festo_module_parent="world_interface">
+    <origin xyz="-1.0 0.0 0.0" rpy="0 0 ${-pi/2}"/>
+  </xacro:festo_module_urdf>
+
+
+  <!-- second to last of the festo moduel -->
+  <xacro:festo_module_urdf module_prefix="festo_straight_2" festo_module_parent="world_interface">
+    <origin xyz="-0.0 -1.16 0.0" rpy="0 0 0"/>
+  </xacro:festo_module_urdf>
+  
+  <!-- last of the festo moduel -->
+  <xacro:festo_module_urdf module_prefix="festo_straight_3" festo_module_parent="world_interface">
+    <origin xyz="0.0 -2.32 0.0" rpy="0 0 0"/>
+  </xacro:festo_module_urdf>
+
+  <!-- midell of the festo moduel -->
+  <xacro:include filename="$(find aau_lab_ros_models)/urdf/festo_t_module/festo_t_module.urdf.xacro"/>
+  <xacro:festo_module_urdf module_prefix="festo_t_1" festo_module_parent="world_interface">
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+  </xacro:festo_module_urdf>
+  
+  
+  
+  
+ 
+
+
+  <!-- ==================================================== -->
+  <!-- Panda robot -->
+  <!-- ==================================================== -->
+  <!-- Franka parameters -->
+  <xacro:arg name="arm_id_1" default="panda1"/>
+  <xacro:arg name="use_cylinder_collision_model" default="true"/>
+  <xacro:arg name="use_gazebo_sim" default="true"/>
+  <xacro:arg name="parent" default="robot1_pedestal_link"/>
+
+  <!-- Load panda arm and hand -->
+  <xacro:include filename="$(find franka_description)/robots/panda_arm.xacro" />
+  <xacro:include filename="$(find franka_description)/robots/hand.xacro"/>
+
+  <!-- Load gazebo control -->
+  <xacro:if value="$(arg use_gazebo_sim)">
+    <xacro:include filename="$(find franka_description)/robots/panda.gazebo.xacro"/>
+    <xacro:include filename="$(find franka_description)/robots/panda.control.xacro"/>
+  </xacro:if>
+
+  <!-- Panda 1 -->
+  <xacro:panda_arm xyz="-0.005 -0.005 0.95" rpy="0 0 0" connected_to="$(arg parent)" arm_id="$(arg arm_id_1)" safety_distance="0.03" use_cylinder_collision_model="$(arg use_cylinder_collision_model)"/>
+  <xacro:hand ns="$(arg arm_id_1)" rpy="0 0 ${-pi/4}" connected_to="$(arg arm_id_1)_link8" safety_distance="0.03" use_cylinder_collision_model="$(arg use_cylinder_collision_model)"/>
+
+  <xacro:arm_gazebo arm_id="$(arg arm_id_1)"/>
+  <xacro:arm_control arm_id="$(arg arm_id_1)"/>
+
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"/>
+  </gazebo>
+
+
+  <!-- ==================================================== -->
+  <!-- Robot 1 pedestal -->
+  <!-- ==================================================== -->
+  <xacro:include filename="$(find external_ros_models)/urdf/robot_pedestal/robot_pedestal.urdf.xacro"/>
+  <xacro:robot_pedestal_urdf pedestal_prefix="robot1_" pedestal_parent="world_interface" pedestal_height="0.95">
+    <origin xyz="-1.0 -1.0 0.0" rpy="0 0 0"/>
+  </xacro:robot_pedestal_urdf>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</robot>
