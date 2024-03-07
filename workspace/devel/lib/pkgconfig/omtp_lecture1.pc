@@ -1,8 +1,0 @@
-prefix=/home/wallat/Desktop/Object-manipulation-and-task-planning-/workspace/devel
-
-Name: omtp_lecture1
-Description: Description of omtp_lecture1
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
