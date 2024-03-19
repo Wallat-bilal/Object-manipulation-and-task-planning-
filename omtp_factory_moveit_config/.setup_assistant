@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: omtp_lecture1
+    relative_path: urdf/omtp_factory.xacro
+    xacro_args: hand:=true
+  SRDF:
+    relative_path: config/omtp_factory.srdf
+  CONFIG:
+    author_name: wallat bilal
+    author_email: wbilal18@student.aau.dk
+    generated_timestamp: 1710322951

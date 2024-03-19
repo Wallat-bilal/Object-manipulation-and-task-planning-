@@ -20,3 +20,33 @@ This made it easier for us to rebuild the Omtp factory world which we have add a
 4. roslaunch visualize_omtp_factory.launch
 
 
+
+
+
+lecture 2
+
+In this lecture we use Lecture 1 omtp_factory.xacro to steup the moveit by using the following in the terminal:
+
+roslaunch moveit_setup_assistant setup_assistant.launch
+
+A MoveIt Setup Assistant well come up which you can pick your omtp_factory.xacro file to use follow the linke to setup the Moveit. https://ros-planning.github.io/moveit_tutorials/doc/setup_assistant/setup_assistant_tutorial.html
+
+
+After the setup of the moveit we need to go in to ros_controllers to change the P, d and keep the i the same.
+
+The reason for this it helps to improve the control performance, adapting to phyical characteristics, stability and responsiveness.
+
+To control the Panda_arm we can use the moveit commander or use a pyhon script to control the Panda_arm.
+
+
+For the pick and place a script as been made with the help of the lectre one of the main thing to note we need hardcode the position of the box since we do not have any sensor on the robot.
+
+to launch the code we need to first start up Rviz and gazebo by using:
+roslaunch omtp_factory_moveit_config demo_gazebo.launch
+
+before runing any python code we need to do this
+chmod +x /home/wallat/Desktop/workspace/src/omtp_course/omtp_lecture2/scripts/lec2_spawn_box.py
+
+Then we can do:
+rosrun omtp_lecture2 lec2_spawn_box.py
+
