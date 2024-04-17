@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="logical_camera" params="camera_namespace camera_name parent origin_xyz origin_rpy">
+    <!-- Logical camera joint -->
+    <joint name="${camera_name}_joint" type="fixed">
+      <origin xyz="${origin_xyz}" rpy="${origin_rpy}"/>
+      <parent link="${parent}"/>
+      <child link="${camera_name}_link"/>
+    </joint>
+
+    <!-- Logical camera link -->
+    <link name="${camera_name}_link">
+      <gravity>false</gravity>
+      <inertial>
+        <mass value="0.1"/>
+        <inertia ixx="0.000166667" ixy="0" ixz="0" iyy="0.000166667" iyz="0" izz="0.000166667"/>
+      </inertial>
+      <visual>
+        <origin xyz="0 0 -0.02" rpy="0 0 -1.5708"/> <!-- Adjust pose here -->
+        <geometry>
+          <mesh filename="package://logical_camera/models/logical_camera/meshes/camera.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 -0.02" rpy="0 0 -1.5708"/> <!-- Adjust pose here -->
+        <geometry>
+          <mesh filename="package://logical_camera/models/logical_camera/meshes/camera.dae"/>
+        </geometry>
+      </collision>
+
+    </link>
+
+    <!-- Logical camera sensor -->
+    <gazebo reference="${camera_name}_link">
+      <sensor name="${camera_name}" type="logical_camera">
+        <logical_camera>
+          <near>0.2</near>
+          <far>1.2</far>
+          <horizontal_fov>1.1</horizontal_fov>
+          <aspect_ratio>1.5</aspect_ratio>
+        </logical_camera>
+
+        <!-- Visualize the camera's frustum in Gazebo -->
+        <visualize>true</visualize>
+        <always_on>true</always_on>
+        <update_rate>10</update_rate>
+      </sensor>
+    </gazebo>
+
+    <gazebo>
+      <plugin name="${camera_name}_controller" filename="libROSLogicalCameraPlugin.so">
+        <!-- Namespace for the camera node topic e.g. /omtp -->
+        <robotNamespace>${camera_namespace}</robotNamespace>
+        <!-- ROS topic for the camera image e.g. /omtp/logical_camera1 -->
+        <image_topic_ros>${camera_name}</image_topic_ros>
+      </plugin>
+    </gazebo>
+
+  </xacro:macro>
+</robot>

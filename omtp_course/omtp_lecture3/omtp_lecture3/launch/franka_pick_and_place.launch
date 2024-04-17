@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Start the tf_object_pose node for Franka Panda robot -->
+  <node name="tf_object_pose" 
+        pkg="omtp_lecture3" 
+        type="tf_object_pose.py" 
+        output="screen">
+  </node>
+</launch>
+
+

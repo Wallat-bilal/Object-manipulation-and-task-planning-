@@ -1,0 +1,198 @@
+<?xml version="1.0" ?>
+<robot name="omtp"
+  xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- ==================================================== -->
+  <!-- Define custom colors                                 -->
+  <!-- ==================================================== -->
+  <material name="red">
+  <color rgba="1 0 0 1"/>
+  </material>
+
+  <material name="green">
+    <color rgba="0 1 0 1"/>
+  </material>
+
+  <material name="orange">
+    <color rgba="1 0.647 0 1"/>
+  </material>
+
+
+  <!-- ==================================================== -->
+  <!-- INITIAL SETUP OF WORLD LINK                          -->
+  <!-- ==================================================== -->
+  <!-- world -->
+  <link name="world" />
+
+  <!-- world_interface. Makes it convenient to move the whole environment according to the world origin -->
+  <link name="world_interface"/>
+
+  <!-- world<->world_interface joint -->
+  <joint name="world_interface_to_world" type="fixed">
+    <parent link="world" />
+    <child link="world_interface" />
+  </joint>
+
+  <!-- ==================================================== -->
+  <!-- Fib14 building -->
+  <!-- ==================================================== -->
+  <xacro:include filename="$(find aau_lab_ros_models)/urdf/fib14/fib14.urdf.xacro"/>
+  <xacro:fib14_urdf fib14_parent="world_interface"/>
+
+
+  <!-- ==================================================== -->
+  <!-- Panda robots -->
+  <!-- ==================================================== -->
+  <!-- Franka parameters -->
+  <xacro:arg name="arm_id_1" default="panda"/>
+  <xacro:arg name="use_cylinder_collision_model" default="false"/>
+  <xacro:arg name="use_gazebo_sim" default="true"/>
+  <xacro:arg name="parent" default="world_interface"/>
+
+  <!-- Load panda arm and hand -->
+  <xacro:include filename="$(find franka_description)/robots/panda_arm.xacro" />
+  <xacro:include filename="$(find franka_description)/robots/hand.xacro"/>
+
+  <!-- Load gazebo control -->
+  <xacro:include filename="$(find franka_description)/robots/panda.gazebo.xacro"/>
+  <xacro:include filename="$(find franka_description)/robots/panda.control.xacro"/>
+
+  <!-- Panda 1 -->
+  <xacro:panda_arm xyz="0 0 0" rpy="0 0 0" connected_to="$(arg parent)" arm_id="$(arg arm_id_1)" safety_distance="0.03" use_cylinder_collision_model="$(arg use_cylinder_collision_model)"/>
+  <xacro:hand ns="$(arg arm_id_1)" rpy="0 0 ${-pi/4}" connected_to="$(arg arm_id_1)_link8" safety_distance="0.03" use_cylinder_collision_model="$(arg use_cylinder_collision_model)" />
+
+  <!--     arm     -->
+  <xacro:arm_gazebo arm_id="$(arg arm_id_1)"/>
+  <xacro:arm_control arm_id="$(arg arm_id_1)"/>
+  <!--     hand    -->
+  <xacro:hand_gazebo arm_id="$(arg arm_id_1)"/>
+  <xacro:hand_control arm_id="$(arg arm_id_1)"/>
+
+<gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <robotNamespace>/</robotNamespace>
+    </plugin>
+</gazebo>
+
+
+
+  <!-- ==================================================== -->
+  <!-- 2D camera for Gazebo                                 -->
+  <!-- ==================================================== -->
+  <xacro:property name="camera_box_size" value="0.05" />
+  <!-- Size of square 'camera' box -->
+
+  <joint name="camera_joint" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="0 0 1.2" rpy="0 0 0"/>
+    <parent link="world_interface"/>
+    <child link="camera_link"/>
+  </joint>
+
+  <!-- Camera -->
+  <link name="camera_link">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="${camera_box_size} ${camera_box_size} ${camera_box_size}"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="${camera_box_size} ${camera_box_size} ${camera_box_size}"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <!-- Generate an optical frame http://www.ros.org/reps/rep-0103.html#suffix-frames
+      so that ros and opencv can operate on the camera frame correctly -->
+  <joint name="camera_optical_joint" type="fixed">
+    <!-- these values have to be these values otherwise the gazebo camera image
+        won't be aligned properly with the frame it is supposedly originating from -->
+    <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
+    <parent link="camera_link"/>
+    <child link="camera_link_optical"/>
+  </joint>
+
+  <link name="camera_link_optical">
+  </link>
+
+  <!-- Camera_link -->
+  <gazebo reference="camera_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Red</material>
+  </gazebo>
+
+  <!-- RGB camera -->
+  <gazebo reference="camera_link">
+    <sensor type="camera" name="camera1">
+      <update_rate>30.0</update_rate>
+      <camera name="2d_camera_head">
+        <horizontal_fov>1.3962634</horizontal_fov>
+        <image>
+          <width>800</width>
+          <height>600</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>300</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <!-- Noise is sampled independently per pixel on each frame.
+               That pixel's noise value is added to each of its color
+               channels, which at that point lie in the range [0,1]. -->
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0.0</updateRate>
+        <cameraName>/camera1</cameraName>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <frameName>camera_link_optical</frameName>
+        <!-- setting hackBaseline to anything but 0.0 will cause a misalignment
+            between the gazebo sensor image and the frame it is supposed to
+            be attached to -->
+        <hackBaseline>0.0</hackBaseline>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+        <CxPrime>0</CxPrime>
+        <Cx>0.0</Cx>
+        <Cy>0.0</Cy>
+        <focalLength>0.0</focalLength>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+
+  <!-- ==================================================== -->
+  <!-- Logical camera                                       -->
+  <!-- ==================================================== -->
+  <xacro:include filename="$(find logical_camera)/urdf/logical_camera.xacro"/>
+  <!-- Must be connected to the world frame, else Gazebo may rotate the entire view -->
+  <xacro:logical_camera
+    camera_namespace="/omtp"
+    camera_name="logical_camera1"
+    parent="world" 
+    origin_xyz="0.5 0.0 1.2"
+    origin_rpy="0 1.5708 0"
+  />
+
+</robot>

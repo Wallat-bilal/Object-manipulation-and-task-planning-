@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="paused" default="false"/>
+  <arg name="gazebo_gui" default="true"/>
+  <arg name="gazebo_debug" default="false"/>
+
+  <!-- ==================================================== -->
+  <!-- Startup simulated world in Gazebo -->
+  <!-- ==================================================== -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" default="$(find logical_camera)/worlds/box_world.world"/>
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="gui" value="$(arg gazebo_gui)"/>
+    <arg name="debug" value="$(arg gazebo_debug)"/>
+  </include>
+
+  <!-- ==================================================== -->
+  <!-- Load universal robot description format (URDF) -->
+  <!-- ==================================================== -->
+  <param name="robot_description" command="xacro  '$(find logical_camera)/urdf/demo_world.xacro'"/>
+
+  <!-- push robot_description to factory and spawn robot in gazebo at the origin, change x,y,z arguments to spawn in a different position -->
+  <node name="spawn_gazebo_model"
+        pkg="gazebo_ros"
+        type="spawn_model"
+        args="-urdf -param robot_description -model robot -x 0 -y 0 -z 0"
+        respawn="false" output="screen" />
+
+  <!-- ==================================================== -->
+  <!-- Start robot state publisher -->
+  <!-- ==================================================== -->
+  <!-- Given the published joint states, publish tf for the robot links -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" />
+
+  <!-- ==================================================== -->
+  <!-- Run Rviz and load the a config for logical camera demo world -->
+  <!-- ==================================================== -->
+  <!-- Start rviz -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find logical_camera)/rviz/logical_camera_demo.rviz" required="false" output="screen" />
+  
+</launch>

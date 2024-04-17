@@ -1,0 +1,27 @@
+digraph G {
+"world_interface" -> "camera_link"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"world" -> "world_interface"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"camera_link" -> "camera_link_optical"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"world_interface" -> "fib14"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"world" -> "logical_camera1_link"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"panda_link8" -> "panda_hand"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"panda_link7" -> "panda_link8"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"panda_link6" -> "panda_link7"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 50.2\nBuffer length: 5.0\nMost recent transform: 16.5\nOldest transform: 11.5\n"];
+"world_interface" -> "panda_link0"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"panda_hand" -> "panda_leftfinger"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 50.2\nBuffer length: 5.0\nMost recent transform: 16.5\nOldest transform: 11.5\n"];
+"panda_hand" -> "panda_rightfinger"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 50.2\nBuffer length: 5.0\nMost recent transform: 16.5\nOldest transform: 11.5\n"];
+"panda_link0" -> "panda_link1"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 50.2\nBuffer length: 5.0\nMost recent transform: 16.5\nOldest transform: 11.5\n"];
+"panda_link1" -> "panda_link2"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 50.2\nBuffer length: 5.0\nMost recent transform: 16.5\nOldest transform: 11.5\n"];
+"panda_link2" -> "panda_link3"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 50.2\nBuffer length: 5.0\nMost recent transform: 16.5\nOldest transform: 11.5\n"];
+"panda_link3" -> "panda_link4"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 50.2\nBuffer length: 5.0\nMost recent transform: 16.5\nOldest transform: 11.5\n"];
+"panda_link4" -> "panda_link5"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 50.2\nBuffer length: 5.0\nMost recent transform: 16.5\nOldest transform: 11.5\n"];
+"panda_link5" -> "panda_link6"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 50.2\nBuffer length: 5.0\nMost recent transform: 16.5\nOldest transform: 11.5\n"];
+"world" -> "robot_frame"[label=" Broadcaster: /gazebo\nAverage rate: 10.212\nBuffer length: 4.896\nMost recent transform: 16.411\nOldest transform: 11.515\n"];
+"robot_frame" -> "robot_ground_plane_frame"[label=" Broadcaster: /gazebo\nAverage rate: 10.212\nBuffer length: 4.896\nMost recent transform: 16.411\nOldest transform: 11.515\n"];
+"robot_frame" -> "robot_box_01_frame"[label=" Broadcaster: /gazebo\nAverage rate: 10.212\nBuffer length: 4.896\nMost recent transform: 16.411\nOldest transform: 11.515\n"];
+"robot_frame" -> "robot_Banana_frame"[label=" Broadcaster: /gazebo\nAverage rate: 10.212\nBuffer length: 4.896\nMost recent transform: 16.411\nOldest transform: 11.515\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 16.515"[ shape=plaintext ] ;
+}->"world";
+}
