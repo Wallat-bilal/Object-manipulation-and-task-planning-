@@ -1,0 +1,3 @@
+bool open  # true to open, false to close
+---
+bool success  # true if the operation was successful
