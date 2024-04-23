@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+	<!-- ================================ -->
+	<!-- Input variables for output types -->
+	<!-- ================================ -->
+	<!-- Will open outputs dependent on true/false 					-->
+	<arg name="rviz" 							default="true"/>
+	<arg name="image_viewer"					default="true"/>
+
+	<!-- ==================== -->
+	<!-- Image viewer choices -->
+	<!-- ==================== -->
+	<!-- Corresponding to varying image viewers related to output	-->
+	<!-- topics														-->			
+	<arg name="image_view_rgb" 					default="true"/>
+	<arg name="image_view_depth" 				default="true"/>
+	<arg name="yolo"							default="true"/>
+	
+	<!-- =================== -->
+	<!-- Image viewer topics -->
+	<!-- =================== -->
+	<!-- Should correspond to the topics output from the camera 	-->
+	<!-- And other outputs given from packages and nodes        	-->
+	<arg name="rgb_topic"						default="/camera/color/image_raw"/>
+	<arg name="depth_topic" 					default="/camera/depth/image_raw"/>
+	<arg name="detection_topic" 				default="image_detections"/>
+	<arg name="rgb_image_rect"                	default="/camera/color/image_rect"/>
+	<arg name="depth_image_rect"   	          	default="/camera/depth/image_rect"/>
+
+	<!-- =================================================== -->
+	<!-- Initialize visualization of images and depth images -->
+	<!-- =================================================== -->
+	<!--<node if="$(arg rviz)" name="rviz" pkg="rviz" type="rviz" args="-d $(find omtp_lecture5)/rviz/rviz.rviz"/> -->
+
+
+	<!-- Image viewers for showcasing output and results -->
+	<group if="$(arg image_viewer)">
+
+		<!-- Color image viewer -->
+		<node if="$(arg image_view_rgb)" name="image_viewer_rgb" pkg="image_view" type="image_view" output="screen">
+			<remap from="image" 		to="$(arg rgb_topic)"/>
+			<param name="window_name" 	value="Raw colour image"/>
+		</node>
+
+		<!-- Depth image viewer -->
+		<node if="$(arg image_view_depth)" name="image_viewer_depth" pkg="image_view" type="image_view" respawn="false" output="screen">
+			<remap from="image" 		to="$(arg depth_topic)"/>
+			<param name="window_name" 	value="Raw depth image"/>
+		</node>
+
+		<!-- Rectified color image viewer -->
+		<node name="image_viewer_rgb_rect" pkg="image_view" type="image_view" output="screen">
+			<remap from="image" 		to="$(arg rgb_image_rect)"/>
+			<param name="window_name" 	value="Rectified color image"/>
+		</node>
+
+		<!-- Rectified depth image viewer -->
+		<node name="image_viewer_depth_rect" pkg="image_view" type="image_view" respawn="false" output="screen">
+			<remap from="image" 		to="$(arg depth_image_rect)"/>
+			<param name="window_name" 	value="Rectified depth image"/>
+		</node>
+
+		<!-- 2D object detection with yolo image viewer -->
+		<node if="$(arg yolo)" name="obj_detect_image" pkg="image_view" type="image_view" output="screen">
+			<remap from="image" to="$(arg detection_topic)"/>
+			<param name="window_name" value="2D detection Output"/>
+		</node>
+
+	</group>
+	
+</launch>

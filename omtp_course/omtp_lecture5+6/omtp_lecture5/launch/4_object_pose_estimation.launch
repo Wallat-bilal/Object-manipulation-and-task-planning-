@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+
+	<!-- input topics -->
+ 	<arg name="camera_info"                      default="/camera/depth/camera_info"/>
+	<arg name="camera_depth_image"               default="/camera/depth/image_rect"/>
+	<arg name="object_detections_in"             default="yolo_objects"/>
+
+	<!-- Output topics -->
+	<arg name="object_poses_out"                 default="pose_6D_objects"/>
+
+	<!-- Takes an unrectified image stream and its associated calibration parameters, and produces rectified images. -->
+	<node name="pose_estimation"   pkg="omtp_lecture6" type="2_object_pose_estimation.py" output="screen" >
+		<remap from="camera_info"                 to="$(arg camera_info)"/>
+		<remap from="camera_depth_image"          to="$(arg camera_depth_image)"/>
+		<remap from="object_detections_in"        to="$(arg object_detections_in)"/>
+		<remap from="object_poses_out"            to="$(arg object_poses_out)"/>
+	</node>
+</launch>

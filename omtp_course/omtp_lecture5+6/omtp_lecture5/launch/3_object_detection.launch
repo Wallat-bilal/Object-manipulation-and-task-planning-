@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+	<!-- ////////////////////////// -->
+	<!-- Object detection arguments -->
+	<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+
+    <!-- ========================== -->
+    <!-- Algorithm choice arguments -->
+    <!-- ========================== -->
+
+    <!-- If using find_objects_2d package -->
+    <arg name="use_find_objects"                default="false"/>
+    <arg name="depth_sense"                     default="true"/>
+
+    <!-- If using yolov5-pytorch package-->
+    <arg name="use_yolo"                        default="true"/>
+
+	<!-- //////////////////// -->
+	<!-- Algorithm parameters -->
+	<!-- \\\\\\\\\\\\\\\\\\\\ -->
+    <!-- Collection of arguments for the two algorithms used -->
+
+    <!-- =============== -->
+    <!-- Yolo parameters -->
+    <!-- =============== -->
+
+    <!-- Complete path to weights -->   
+    <arg name="weights_path"	                default="$(find yolov5_pytorch_ros)/weights/m640rot.pt"/>
+
+    <!-- Whether to publish an image topic -->
+    <arg name="publish_image"	                default="true"/>
+
+    <!-- Detection confidence -->
+    <arg name="confidence"                      default="0.75"/>
+
+    <!-- Topics -->
+    <arg name="image_frame"                     default="camera_color_frame"/>
+    <arg name="detected_objects_topic"          default="yolo_objects"/>
+    <arg name="detections_image_topic"          default="image_detections"/>
+
+    <!-- ========================= -->
+    <!-- find_object_2d parameters -->
+    <!-- ========================= -->
+
+    <!-- None -->
+
+    <!-- =================== -->
+    <!-- Parameters for both -->
+    <!-- =================== -->
+    <arg name="rgb_image_rect"                  default="/camera/color/image_rect"/>
+    <arg name="rgb_camera_info"                 default="/camera/color/camera_info"/>
+    <arg name="registered_image"                default="/camera/registered/reg_rect"/>
+    
+    
+	<!-- ////////////////////////// -->
+	<!--           Nodes            -->
+	<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+
+    <!-- YoLov5 detector -->
+    <node if="$(arg use_yolo)" name="detector"  pkg="yolov5_pytorch_ros" type="detect.py" output="screen" respawn="true">
+        <param name="image_topic"               value="$(arg rgb_image_rect)"/>
+        <param name="frame_id"               	value="$(arg image_frame)"/>
+        <param name="weights_path"              value="$(arg weights_path)"/>
+        <param name="publish_image"             value="$(arg publish_image)"/>
+        <param name="detected_objects_topic"    value="$(arg detected_objects_topic)"/>
+        <param name="detections_image_topic"    value="$(arg detections_image_topic)"/>
+        <param name="confidence"                value="$(arg confidence)"/>
+    </node>
+
+    <!-- find_object_2d detector -->
+    <node if="$(arg use_find_objects)" name="detect_obj" pkg="find_object_2d" type="find_object_2d">
+        <param if="$(arg depth_sense)"      name="subscribe_depth"               value="true"/>
+        <remap if="$(arg depth_sense)"      from="rgb/image_rect_color"          to="$(arg rgb_image_rect)"/>
+        <remap if="$(arg depth_sense)"      from="rgb/camera_info"               to="$(arg rgb_camera_info)"/>
+        <remap if="$(arg depth_sense)"      from="registered_depth/image_raw"    to="$(arg registered_image)"/>
+        <remap unless="$(arg depth_sense)"  from="image"                         to="$(arg rgb_image_rect)"/>
+        <param unless="$(arg depth_sense)"  name="subscribe_depth"               value="false"/>
+        <param name="settings_path"                                              value="$(find omtp_lecture5)/config/find_obj_settings.ini"/>
+        <param name="objects_path"                                               value="$(find omtp_lecture5)/objects/"/>
+    </node>
+</launch>

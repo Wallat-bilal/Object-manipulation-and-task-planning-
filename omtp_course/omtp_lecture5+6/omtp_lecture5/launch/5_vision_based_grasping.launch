@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+	<!-- input topics -->
+	<arg name="object_poses_in"             default="pose_6D_objects"/>
+
+	<!-- Takes an unrectified image stream and its associated calibration parameters, and produces rectified images. -->
+	<node name="object_grasping"   pkg="omtp_lecture6" type="3_vision_based_grasping.py" output="screen" >
+		<remap from="object_poses_in"             to="$(arg object_poses_in)"/>
+	</node>
+</launch>

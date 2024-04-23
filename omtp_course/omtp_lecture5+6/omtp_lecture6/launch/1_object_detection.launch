@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    <!-- Camera topic and weights, config and classes files -->
+    <arg name="image_topic"	                default=""/>
+    <arg name="weights_path"	            default=""/>
+
+    <!-- Published topics -->
+    <arg name="publish_image"	            default=""/>
+    <arg name="detected_objects_topic"      default=""/>
+    <arg name="detections_image_topic"      default=""/>
+
+    <!-- Detection confidence -->
+    <arg name="confidence"                  default=""/>
+
+    <!-- Node -->
+    <node name="detector" pkg="yolov5_pytorch_ros" type="detect.py" output="screen" respawn="true">
+        <param name="image_topic"               value="$(arg image_topic)"/>
+        <param name="frame_id"               	value="camera"/>
+        <param name="weights_path"              value="$(arg weights_path)"/>
+        <param name="publish_image"             value="$(arg publish_image)"/>
+        <param name="detected_objects_topic"    value="$(arg detected_objects_topic)"/>
+        <param name="detections_image_topic"    value="$(arg detections_image_topic)"/>
+        <param name="confidence"                value="$(arg confidence)"/>
+    </node>
+</launch>
