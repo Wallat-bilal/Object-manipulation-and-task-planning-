@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+    <!-- Launch RViz -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find omtp_lecture5)/config/my_rviz_config.rviz"/>
+
+    <!-- Launch Image Viewer Node (using image_view) for camera -->
+    <node name="image_viewer_depth" pkg="image_view" type="image_view" respawn="false">
+        <remap from="image" to="/camera/depth/image_raw"/>
+    </node>
+
+    <node name="image_viewer_color" pkg="image_view" type="image_view" respawn="false">
+        <remap from="image" to="/camera/color/image_raw"/>
+    </node>
+</launch>
+
