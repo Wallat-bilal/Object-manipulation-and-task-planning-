@@ -145,10 +145,81 @@ When you launch flexbe_full, the first thing we do is add an overview like the n
 
 ##Lecture 7+8 Guest lecture- robots in contact - from task demonstration to execution in contact
 
+# simple_dmp
+
+This is an (almost) minimal implementation of DMPs in Cartesian space (both position and quaternion) and in Joint space, with an optional (default disabled) roto-dilatation term.
+
+
+## Dependencies
+This project depends on:
+* NumPy
+* NumPy-Quaternion
+* Matplotlib
+* Pandas
+* dmp
+* roboticstoolbox
+* spatialmath-python 
+* mujoco
+* glfw
+
+To install these, run <code>pip3 install --user numpy numpy-quaternion matplotlib pandas</code>.	
+
+## Running
+To the run the project, navigate to the root directory and call <code>python3 main.py</code>. This will first train and plot a DMP in joint space and then do the same in Cartesian space for the provided demonstration file, demonstration.csv.
+
+
+## First setups
+• Clone the repository git@gitlab.com:Kramberger/omtp_2024_examples_and_exercises.git.
+• In the folder under dmp/dmp_joint.py open the file.
+• The file acts as a blueprint in which some of the equation and definitions are missing.
+
+### Exercise 1
+This script illustrates the utilization of the JointDMP class from the dmp_joint module for generating and adapting trajectories of robot joints. It imports a trajectory from a CSV file, then employs this trajectory to train a DMP. Subsequently, it simulates the behavior of this DMP and visualizes the outcomes. The script also involves defining the time step dt, computing the total duration tau, and determining the time steps ts.
+
+dt = 1 / 100
+tau = len(demo) * dt
+ts = np.arange(0, tau, dt)
+
+
+- Initialize the DMP object with the desired parameters:
+
+
+dmp_q = dmp_joint.JointDMP(NDOF=7, n_bfs=100, alpha=48, beta=12, cs_alpha=cs_alpha)
+
+
+- Simulate the DMP and obtain the joint positions, velocities, and accelerations:
+
+- Modify the duration and goal position of the DMP to compare the original and adapted trajectories:
 
 
 
+### Exercise 2
+This Python script showcases how Dynamic Movement Primitives (DMPs) are applied to control the UR 5 Robot in both joint and Cartesian spaces. It loads a file named "demonstration.csv" that includes data on joint positions, Cartesian coordinates, and orientations. The script processes this data to train and create trajectories using DMPs, and subsequently displays these trajectories on plots for analysis.
 
+
+### Exercise 3
+This script will open a mujoco simulation with a franka robot.The robot joints will be controlled to move like a JTrajectory.csv file using DMP.
+
+    Exercise3_demo_DMP_franka.py 
+    
+
+Outputs of the exercises are in the omtp_lecture7/Exercise_Outputs . 
+
+
+### Exercise 4
+to make sure that the DMP_franka.py sends the joint trajectories to gazebo simulation using ROS, we need to make sure that ROS python client libraries have the setups.
+
+
+1. we need to make sure that our ROS Noetic Python libraries is installed.
+2. we need to initialize a ros node.
+3. we need to create a publisher.
+4. we need to modify the step function so we can calculate new joint states and publish them in to gazebo using ROS massaging system.
+
+
+
+### Exercise 5
+
+In here we open the folder named UR5_Example and open the script Grasp_sim.py and we modify the script so it can replace the point to point interpolation function (Jmove and Cmove) with a funtion for linear DMPs and plan the paths between the given points. 
 
 
 
