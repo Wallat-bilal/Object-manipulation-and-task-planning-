@@ -1,7 +1,7 @@
 # Object-manipulation-and-task-planning-
 This repository is used to make assignments in Object manipulation and task planning.
 
-#lecture 1 Building a robot simulation environment in ros
+# lecture 1 Building a robot simulation environment in ros
 
 we have learned how to use URDF and visualize the object interaction with RViz.
 Then we toke the omtp_factory.xacro by following the tutorial we end with new file which changes it in to a .urdf file.
@@ -24,7 +24,7 @@ This made it easier for us to rebuild the Omtp factory world which we have add a
 
 
 
-#lecture 2Manipulation with moveit
+# lecture 2 Manipulation with moveit
 
 In this lecture we use Lecture 1 omtp_factory.xacro to steup the moveit by using the following in the terminal:
 
@@ -53,7 +53,7 @@ rosrun omtp_lecture2 lec2_spawn_box.py
 
 
 
-#Lecture 3 object detection and grasping
+# Lecture 3 object detection and grasping
 
 In this lecture we learned about how to use a logical camera which helped to detection in the object we want to fine.
 
@@ -92,7 +92,7 @@ if it does not work then reinstal catkin.
 
 
 
-#Lecture 4 Behavior Design with state machines
+# Lecture 4 Behavior Design with state machines
 
 We used the FlexBE app so we can create machines that perform multiple tasks without the need to hardcode them. To use the FlexBE app, we need to install the following:
 
@@ -116,7 +116,7 @@ When you launch flexbe_full, the first thing we do is add an overview like the n
 
 
 
-##Lecture 5 image processing in robotics applications
+# Lecture 5 image processing in robotics applications
 
 
 
@@ -127,7 +127,7 @@ When you launch flexbe_full, the first thing we do is add an overview like the n
 
 
 
-##Lecture 6 visual recognition for robotics grasping applications
+# Lecture 6 visual recognition for robotics grasping applications
 
 
 
@@ -143,7 +143,7 @@ When you launch flexbe_full, the first thing we do is add an overview like the n
 
 
 
-##Lecture 7+8 Guest lecture- robots in contact - from task demonstration to execution in contact
+# Lecture 7+8 Guest lecture- robots in contact - from task demonstration to execution in contact
 
 # simple_dmp
 
