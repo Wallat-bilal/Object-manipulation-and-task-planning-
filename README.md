@@ -313,7 +313,7 @@ for i in range(50):
 imageio.mimwrite('random_agent.gif', frames)
 ```
 Here can we see the .gif:
-![Random Agent](https://github.com/Wallat-bilal/Object-manipulation-and-task-planning-/blob/main/omtp_course/omtp_lecture10/random_agent.gif)
+![Random Agent](https://github.com/Wallat-bilal/Object-manipulation-and-task-planning-/blob/main/omtp_course/omtp_lecutre10/random_agent.gif)
 
 
 You can train the agent using the following command:
@@ -330,7 +330,7 @@ python panda_reach_test_agent.py
 
 Below is a gif demonstrating the agent's performance after 200 training steps:
 
-![Trained Agent](https://github.com/Wallat-bilal/Object-manipulation-and-task-planning-/blob/main/omtp_course/omtp_lecture10/test_agent.gif)
+![Trained Agent](https://github.com/Wallat-bilal/Object-manipulation-and-task-planning-/blob/main/omtp_course/omtp_lecutre10/test_agent.gif)
 
 
 Tensorboard is an invaluable tool for visualizing the training process. You can launch Tensorboard using the command below, just as in previous exercises:
@@ -339,6 +339,6 @@ tensorboard --logdir ./runs
 ```
 After launching, Tensorboard allows you to observe the training dynamics. The screenshot below depicts training sessions of 200,000 and 100,000 steps, illustrating how the training is progressing towards achieving the set goals.
 
-![Tensorboard](https://github.com/Wallat-bilal/Object-manipulation-and-task-planning-/blob/main/omtp_course/omtp_lecture10/tensorboard_lec10.png)
+![Tensorboard](https://github.com/Wallat-bilal/Object-manipulation-and-task-planning-/blob/main/omtp_course/omtp_lecutre10/tensorboard_lec10.png)
 
 
