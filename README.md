@@ -126,7 +126,7 @@ When you launch flexbe_full, the first thing we do is add an overview like the n
 
 # Lecture 5 image processing in robotics applications
 
-
+1. [omtp_lecture5](omtp_lecture5/Readme.md)
 
 
 
