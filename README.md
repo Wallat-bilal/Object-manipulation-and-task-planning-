@@ -14,12 +14,12 @@ which you can see by finding <!-- Include Gazebo launch --> in the file and <!--
 We have looked in to the OMTP factory world one of the main problem with it was it lagged our PC so we had to remove the walls. We did this by going in too the omtp_factory.xacro and removed  <!-- Fib14 building -->.
 
 This made it easier for us to rebuild the Omtp factory world which we have add a franka panda robot arm and add smart lab modules to visualize the lab and robot arm all one need to do is to open the terminal do is:
-
+```
 1. cd ~/Desktop/Object-manipulation-and-task-planning-/workspace
 2. source devel/setup.bash
 3. cd ~/Desktop/Object-manipulation-and-task-planning-/workspace/src/omtp_course/omtp_lecture1/launch
 4. roslaunch visualize_omtp_factory.launch
-
+```
 
 
 
@@ -43,14 +43,17 @@ To control the Panda_arm we can use the moveit commander or use a pyhon script t
 For the pick and place a script as been made with the help of the lectre one of the main thing to note we need hardcode the position of the box since we do not have any sensor on the robot.
 
 to launch the code we need to first start up Rviz and gazebo by using:
+```
 roslaunch omtp_factory_moveit_config demo_gazebo.launch
-
+```
 before runing any python code we need to do this
+```
 chmod +x /home/wallat/Desktop/workspace/src/omtp_course/omtp_lecture2/scripts/lec2_spawn_box.py
-
+```
 Then we can do:
+```
 rosrun omtp_lecture2 lec2_spawn_box.py
-
+```
 
 
 # Lecture 3 object detection and grasping
@@ -73,11 +76,16 @@ The next launch file makes it easier to run the code so you dont need to naviget
 
 
 Terminal:
+```
 roslaunch omtp_lecture3 omtp_lecture3.launch
-
+```
 
 Then make new Terminal
+```
+
 roslaunch omtp_lecture3 franka_pick_and_place.launch 
+
+```
 
 
 If there are any error dont forget to do 
@@ -96,14 +104,14 @@ if it does not work then reinstal catkin.
 
 We used the FlexBE app so we can create machines that perform multiple tasks without the need to hardcode them. To use the FlexBE app, we need to install the following:
 
-1.flexbe_app
-2.flexbe_behavior_engine
-3.generic_flexbe_state
-4.omtp_factory_behaviors
-5.panda_v1
-6.aau_lab_ros_modules
-7.franka_description
-8.omtp_support
+1. flexbe_app
+2. flexbe_behavior_engine
+3. generic_flexbe_state
+4. omtp_factory_behaviors
+5. panda_v1
+6. aau_lab_ros_modules
+7. franka_description
+8. omtp_support
 
 To ensure that the FlexBE app recognizes the behaviors, we need to do a catkin build. First, we need to run roslaunch omtp_lecture4 omtp_flexbe_demo.launch. Next, we launch the FlexBE app by using roslaunch flexbe_app flexbe_full.launch.
 
@@ -275,29 +283,62 @@ Proximal Policy Optimization (PPO) is a policy gradient method used in reinforce
 
 
 # lecture 10 Deep reinforcement learning part 2
+This lecture we done some installations from this github [Reinforcement Learning with the Franka Panda robot pybullet simulation](https://github.com/simonbogh/rl_panda_gym_pybullet_example)
+
+To save our simulation as .gif we need to install:
+
+pip install imageio
+```
+pip install imageio
+```
+
+After this we test the ebvironment by running a random agent.
+```
+python panda_reach_random_agent.py
+```
+To make sure the .gif is saved we need to make a list of frames rendered by the envurinment. After using imageio.mimwrite we can saved the .gif file.
+So it would like something like this:
+```
+import os
+import imageio
+...
+frames = [] # list of frames. defined inside the run_random_agent function
+... 
+frames.append(env.render(mode='rgb_array'))
+...
+for i in range(50): 
+    ... 
+    frames.append(env.render(mode='rgb_array'))
+...
+imageio.mimwrite('random_agent.gif', frames)
+```
+Here can we see the .gif:
+![Random Agent](https://github.com/Wallat-bilal/Object-manipulation-and-task-planning-/blob/main/omtp_course/omtp_lecture10/random_agent.gif)
 
 
+You can train the agent using the following command:
+```
+python panda_reach_train_agent.py
+
+```
+This command initiates training for 200,000 steps and saves the model in the current directory, incorporating the current date in the filename.
+
+Similarly, to save a .gif of the agent and test its performance after training, execute the following command:
+```
+python panda_reach_test_agent.py
+```
+
+Below is a gif demonstrating the agent's performance after 200 training steps:
+
+![Trained Agent](https://github.com/Wallat-bilal/Object-manipulation-and-task-planning-/blob/main/omtp_course/omtp_lecture10/test_agent.gif)
 
 
+Tensorboard is an invaluable tool for visualizing the training process. You can launch Tensorboard using the command below, just as in previous exercises:
+```
+tensorboard --logdir ./runs
+```
+After launching, Tensorboard allows you to observe the training dynamics. The screenshot below depicts training sessions of 200,000 and 100,000 steps, illustrating how the training is progressing towards achieving the set goals.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+![Tensorboard](https://github.com/Wallat-bilal/Object-manipulation-and-task-planning-/blob/main/omtp_course/omtp_lecture10/tensorboard_lec10.png)
 
 
