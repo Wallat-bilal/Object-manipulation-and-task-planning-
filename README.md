@@ -225,7 +225,55 @@ In here we open the folder named UR5_Example and open the script Grasp_sim.py an
 
 
 
-##lecture 9 Deep reinforcement learning for robot control
+# lecture 9 Deep reinforcement learning for robot control
+
+in this lecture we have made Python script for training a reinforcement learning agent with the Deep Q-Network (DQN) and Proximal Policy Optimization (PPO) algorithms, using the Stable Baselines 3 library."
+
+## Here we need some dependencies
+
+1. Python 3.6 or higher
+2. OpenAI Gym
+3. Stable Baselines 3
+4. Tensorflow
+5. TensorBoard
+
+## We need to do some installation
+
+
+1. pip install gym
+2. pip install stable-baselines3[extra]
+3. pip install tensorflow
+4. pip install tensorboard
+5. pip install pyglet==1.5.27
+
+
+Reinforcement learning is a subset of machine learning in which a learner is trained to make decisions within an environment by performing actions and observing the outcomes. The learner receives feedback through rewards, which inform its future decisions. The objective is for the learner to develop a strategy, known as a policy, that maximizes the total expected rewards over time.
+
+The CartPole problem is a well-known benchmark task in reinforcement learning. In this task, the challenge is to keep a pole balanced on a moving cart. The learner controls the cart by applying forces to either side. For each time step that the pole remains upright and the cart stays near the center, the learner earns a reward of +1. The task ends, and the episode concludes, if the pole tips over or the cart drifts too far from the center position. This problem tests the learner's ability to learn effective balancing strategies under dynamic conditions.
+
+The environment employed in this project is the CartPole-v1 from the OpenAI Gym library, which features a cart capable of horizontal movement with a pole attached via a hinge. The learner, or controller, has the ability to exert forces on the cart, directing it either left or right. The primary objective for the learner is to maintain the pole in a balanced position for the longest possible duration.
+
+The observation space is continuous and has four dimensions:
+1. Cart position
+2. Cart velocity
+3. Pole angle
+4. Pole angular velocity
+
+The action space is discrete and has two possible actions:
+
+1. Push the cart to the left
+2. Push the cart to the right
+
+## DQN
+Deep Q-Network (DQN) is a reinforcement learning technique that merges the principles of Q-learning with deep neural networks. DQN employs a neural network to estimate the Q-function, which assigns expected future rewards to different state-action combinations. The learner, or decision-maker, selects actions based on which one yields the highest Q-value, aiming to maximize the anticipated rewards.
+
+![No training](https://github.com/Wallat-bilal/Object-manipulation-and-task-planning-/tree/main/omtp_course/omtp_lecture9/notrain.gif)
+![Trained for 1 million timesteps](https://github.com/Wallat-bilal/Object-manipulation-and-task-planning-/tree/main/omtp_course/omtp_lecture9/1million.gif)
+## PPO
+Proximal Policy Optimization (PPO) is a policy gradient method used in reinforcement learning. It focuses on refining the learner's strategy by maximizing the total expected rewards, while also ensuring that updates to the policy are not excessively divergent from the previous version. This balance is maintained through a clipped objective function, which imposes penalties on substantial updates to the policy.
+
+
+# lecture 10 Deep reinforcement learning part 2
 
 
 
@@ -243,7 +291,11 @@ In here we open the folder named UR5_Example and open the script Grasp_sim.py an
 
 
 
-##lecture 10 Deep reinforcement learning part 2
+
+
+
+
+
 
 
 
