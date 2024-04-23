@@ -267,8 +267,9 @@ The action space is discrete and has two possible actions:
 ## DQN
 Deep Q-Network (DQN) is a reinforcement learning technique that merges the principles of Q-learning with deep neural networks. DQN employs a neural network to estimate the Q-function, which assigns expected future rewards to different state-action combinations. The learner, or decision-maker, selects actions based on which one yields the highest Q-value, aiming to maximize the anticipated rewards.
 
-![No training](https://github.com/Wallat-bilal/Object-manipulation-and-task-planning-/tree/main/omtp_course/omtp_lecture9/notrain.gif)
-![Trained for 1 million timesteps](https://github.com/Wallat-bilal/Object-manipulation-and-task-planning-/tree/main/omtp_course/omtp_lecture9/1million.gif)
+![No training](https://github.com/Wallat-bilal/Object-manipulation-and-task-planning-/blob/main/omtp_course/omtp_lecture9/notrain.gif)
+
+![Trained for 1 million timesteps](https://github.com/Wallat-bilal/Object-manipulation-and-task-planning-/blob/main/omtp_course/omtp_lecture9/1million.gif)
 ## PPO
 Proximal Policy Optimization (PPO) is a policy gradient method used in reinforcement learning. It focuses on refining the learner's strategy by maximizing the total expected rewards, while also ensuring that updates to the policy are not excessively divergent from the previous version. This balance is maintained through a clipped objective function, which imposes penalties on substantial updates to the policy.
 
