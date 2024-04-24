@@ -1,8 +1,0 @@
-future-fstrings
-rospy
-catkin_pkg
-numpy
-sympy
-opencv-python  
-opencv-contrib-python
-empy
