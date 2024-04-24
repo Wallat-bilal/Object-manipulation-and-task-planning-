@@ -126,7 +126,7 @@ When you launch flexbe_full, the first thing we do is add an overview like the n
 
 # Lecture 5+6 image processing in robotics applications and visual recognition for robotics grasping applications
 
-1. [omtp_lecture5](https://github.com/Wallat-bilal/Object-manipulation-and-task-planning-/blob/main/omtp_course/omtp_lecture5%2B6/README.md)
+1. [omtp_lecture5+6](https://github.com/Wallat-bilal/Object-manipulation-and-task-planning-/blob/main/omtp_course/omtp_lecture5%2B6/README.md)
 
 
 
