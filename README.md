@@ -26,23 +26,21 @@ This made it easier for us to rebuild the Omtp factory world which we have add a
 
 # lecture 2 Manipulation with moveit
 
-In this lecture we use Lecture 1 omtp_factory.xacro to steup the moveit by using the following in the terminal:
-
+In this lecture, we use "Lecture 1 omtp_factory.xacro" to set up MoveIt by using the following command in the terminal:
+```
 roslaunch moveit_setup_assistant setup_assistant.launch
+```
+A MoveIt Setup Assistant will come up, where you can select your "omtp_factory.xacro" file to use. Follow the link to set up MoveIt: https://ros-planning.github.io/moveit_tutorials/doc/setup_assistant/setup_assistant_tutorial.html
 
-A MoveIt Setup Assistant well come up which you can pick your omtp_factory.xacro file to use follow the linke to setup the Moveit. https://ros-planning.github.io/moveit_tutorials/doc/setup_assistant/setup_assistant_tutorial.html
+After setting up MoveIt, we need to go into ros_controllers to change the P, D, and keep the I the same.
 
+The reason for this is that it helps to improve the control performance, adapting to physical characteristics, stability, and responsiveness.
 
-After the setup of the moveit we need to go in to ros_controllers to change the P, d and keep the i the same.
+To control the Panda arm, we can use the MoveIt commander or a Python script.
 
-The reason for this it helps to improve the control performance, adapting to phyical characteristics, stability and responsiveness.
+For the pick and place, a script has been made with the help of Lecture 1. One of the main things to note is that we need to hardcode the position of the box since we do not have any sensors on the robot.
 
-To control the Panda_arm we can use the moveit commander or use a pyhon script to control the Panda_arm.
-
-
-For the pick and place a script as been made with the help of the lectre one of the main thing to note we need hardcode the position of the box since we do not have any sensor on the robot.
-
-to launch the code we need to first start up Rviz and gazebo by using:
+To launch the code, we need to first start up Rviz and Gazebo by using:
 ```
 roslaunch omtp_factory_moveit_config demo_gazebo.launch
 ```
@@ -58,22 +56,21 @@ rosrun omtp_lecture2 lec2_spawn_box.py
 
 # Lecture 3 object detection and grasping
 
-In this lecture we learned about how to use a logical camera which helped to detection in the object we want to fine.
+In this lecture, we learned about how to use a logical camera, which helps in detecting the object we want to find.
 
-In oure case we want to fine the box that we spowed in the Gazebo11 there is also a banana.
+In our case, we want to find the box that we spawned in Gazebo11; there is also a banana.
 
-we also learned how to use the tf2 to make a transformtion frames so the robot can fine the box and try to graps it.
+We also learned how to use tf2 to create transformation frames so the robot can find the box and attempt to grasp it.
 
-In the omtp_lecture3 you well fine the logical_camera the ros_controler in this case where you can change the PID of it also the scripts that use to move the panda arm in Gazebo11.
+In omtp_lecture3, you will find the logical_camera and the ros_controller, where you can change the PID. Also, there are scripts used to move the panda arm in Gazebo11.
 
-The script called Tf:object:pose.py in it you well fine all the imports and the transformation with the camera and movit that used to move the panda arm.
+The script called Tf_object_pose.py contains all the imports and the transformations with the camera and MoveIt that are used to move the panda arm.
 
-If any changes need less say if we need new camera you can just go under urdf and put the camera name and location that been use in Gazebo11 to use.
+If any changes are needed, say if we need a new camera, you can just go under the URDF and specify the camera name and location that has been used in Gazebo11.
 
-To run the program two launch file has been made one named omtp_lecture3.launch whuch runs Gazebo11 RVis and makes the world that the robot and everything else that spowned in.
+To run the program, two launch files have been made. One is named omtp_lecture3.launch, which runs Gazebo11, RViz, and creates the world where the robot and everything else are spawned.
 
-The next launch file makes it easier to run the code so you dont need to naviget all the way to script folder just to do rosrun omtp_lecture3 so instad we made a launch file that called franka_pick_and_place.lanud all it does it runs the script.
-
+The next launch file makes it easier to run the code so you don't need to navigate all the way to the script folder just to do rosrun omtp_lecture3. Instead, we made a launch file called franka_pick_and_place.launch that runs the script.
 
 Terminal:
 ```
@@ -89,9 +86,12 @@ roslaunch omtp_lecture3 franka_pick_and_place.launch
 
 
 If there are any error dont forget to do 
+```
 catkin clean
+```
+```
 Catkin build
-
+```
 if it does not work then reinstal catkin.
 
 
@@ -115,7 +115,7 @@ We used the FlexBE app so we can create machines that perform multiple tasks wit
 
 To ensure that the FlexBE app recognizes the behaviors, we need to do a catkin build. First, we need to run roslaunch omtp_lecture4 omtp_flexbe_demo.launch. Next, we launch the FlexBE app by using roslaunch flexbe_app flexbe_full.launch.
 
-When you launch flexbe_full, the first thing we do is add an overview like the name, package descriptions, etc. Next, we go into the state machine editor and start adding states that our robot needs to perform. Once everything has been added, we do auto-connect. If everything goes well with no errors, we get to see the start-to-finish behavior of the robot.
+Upon launching flexbe_full, the first step is to add an overview, including the name and package descriptions. Then, proceed to the state machine editor and start adding the states required for the robot's operations. After incorporating all the necessary states, use the auto-connect feature to link them appropriately. If everything is set up correctly without errors, you will be able to see the start-to-finish behavior of the robot.
 
 
 
